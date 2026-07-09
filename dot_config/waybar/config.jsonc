@@ -1,0 +1,86 @@
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 0,
+    "margin-top": 6,
+    "margin-left": 8,
+    "margin-right": 8,
+    "fixed-center": true,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "mpris", 
+        "pulseaudio", 
+        "network", 
+        "battery", 
+        "custom/notification"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "active": "●",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "  {:%a, %d %b %Y}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "mpris": {
+        "format": "{status_icon} {title}",
+        "format-paused": "{status_icon} {title}",
+        "player-icons": {
+            "default": "▶"
+        },
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": "⏹"
+        },
+        "max-length": 20,
+        "ellipsis": "…"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 muted",
+        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 eth",
+        "format-disconnected": "󰤭 offline",
+        "tooltip-format-wifi": "{essid} {signalStrength}%\n{ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+        "tooltip-format": "{timeTo}"
+    },
+    
+    "custom/notification": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "🔔 {}",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "interval": 2
+    }
+}

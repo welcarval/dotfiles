@@ -1,0 +1,26 @@
+# Fonte
+font_family JetBrainsMono Nerd Font
+bold_font JetBrainsMono Nerd Font Bold
+italic_font JetBrainsMono Nerd Font Italic
+bold_italic_font JetBrainsMono Nerd Font Bold Italic
+font_size 12.0
+
+# Transparência
+background_opacity 0.8
+
+# Padding
+window_padding_width 10
+
+# Keybinds
+map ctrl+shift+v paste_from_clipboard
+map shift+enter send_text all \x1b\r
+
+color_scheme none
+
+# desativa font features extras
+font_features JetBrainsMonoNerdFont-Regular -calt -liga
+font_features JetBrainsMonoNerdFont-Bold -calt -liga
+font_features JetBrainsMonoNerdFont-Italic -calt -liga
+font_features JetBrainsMonoNerdFont-BoldItalic -calt -liga
+
+term alacritty
