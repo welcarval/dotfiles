@@ -37,3 +37,9 @@ vim.schedule(function()
 end)
 
 require("utils.lsp_appearence")
+require("configs.java.detect").setup_autocmd()
+
+-- vim.diagnostic.config({
+--   virtual_lines = { current_line = true },
+--   virtual_text = false,
+-- })

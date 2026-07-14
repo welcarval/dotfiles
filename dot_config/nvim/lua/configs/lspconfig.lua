@@ -31,3 +31,5 @@ vim.lsp.config("hls", {
     filetypes = { "haskell", "lhaskell", "cabal" },
 })
 vim.lsp.enable("hls")
+
+vim.diagnostic.config({ virtual_text = false })

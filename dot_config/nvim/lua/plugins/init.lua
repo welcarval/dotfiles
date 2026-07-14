@@ -1,5 +1,3 @@
-require("utils.java_detect").setup_autocmd()
-
 return {
     {
         "stevearc/conform.nvim",
@@ -101,6 +99,7 @@ return {
                 },
             })
             vim.lsp.enable('jdtls')
+            require("configs.java.dap").setup_autocmds()
         end,
     },
     {
@@ -127,6 +126,7 @@ return {
     },
     {
         "rcarriga/nvim-dap-ui",
+        event = "User JavaProjectDetected",
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
         config = function()
             require("dapui").setup()
@@ -135,6 +135,23 @@ return {
             dap.listeners.after.event_initialized["dapui_config"] = function()
                 dapui.open()
             end
+
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+        end,
+    },
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+        config = function()
+            require("tiny-inline-diagnostic").setup()
+            vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
         end,
     }
 }
